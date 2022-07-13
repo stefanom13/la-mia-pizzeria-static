@@ -1,5 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+        List<Pizza> pizzas = new List<Pizza>();
+
+    pizzas.Add(new Pizza(1, "Margherita","La margherita più buona che c'è", "img/margherita.jpg", 5.00f));
+    pizzas.Add(new Pizza(2, "Rucolona","LA nostra nuova rucolola", "img/piz.jpg", 6.00f));
+    pizzas.Add(new Pizza(3, "Salame Piccante","Occhio al nostro piccante", "img/frf.jpg", 5.50f));
+    pizzas.Add(new Pizza(4, "Quattro Stagioni","Vieni a provare tutte le nostre stagioni", "img/er.jpg", 8f));
+    pizzas.Add(new Pizza(5, "Verdure","", "img/verdure.jpg", 6f));
+    pizzas.Add(new Pizza(6, "Viennese","", "img/pizza.jpg", 5.50f));
+    pizzas.Add(new Pizza(7, "4 Pomodori","", "img/4pomodori.jpeg", 5.50f));
+    pizzas.Add(new Pizza(8, "Nduja e Formaggio","", "img/nduja1.jpg", 7.50f));
 }
 
 <!DOCTYPE html>
@@ -14,14 +24,36 @@
 </head>
 <body>
     <header class="">
-        
+        <div>
+            <h1>Benvenuti nella mia pizzeria</h1>
+        </div>
     </header>
+    <main>
+        <div class="display-3 mb-5">
+            <p>Menu pizze:</p>
+        </div>
+    </main>
+    <section>
+        <div>
+     <ul>
+        @foreach (Pizza pizza in pizzas)
+        {
+            <li>
+                <p class="p-3">*********</p>
+                <h2>ID pizza: @pizza.Id</h2>
+                <h2>@pizza.NomePizza</h2>
+                <figure class=""><img width="70%" height="240px" src="@pizza.PathImage" alt="@pizza.NomePizza" /></figure>
+                <p>Descrizione: @pizza.Descrizione</p>
+                <p>Prezzo: @pizza.Prezzo £</p>
+            </li>
+        }
+    </ul>
+        </div>
+    </section>
     
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - la_mia_pizzeria_static - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        footer
     </footer>
 </body>
 </html>
